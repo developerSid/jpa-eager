@@ -35,6 +35,11 @@ fun main(args: Array<String>) {
                            manufacturer = "Manufacturer One",
                            name = "Toy One",
                            condition = "New"
+                        ),
+                        Toy(
+                           manufacturer = "Manufacturer Two",
+                           name = "Toy Two",
+                           condition = "Destroyed"
                         )
                      )
                   )
@@ -57,7 +62,7 @@ fun main(args: Array<String>) {
          val threadGrandParentService = ac.getBean(GrandParentService::class.java)
          val foundGrandParent = threadGrandParentService.findById(savedGrandParent.id!!)
 
-         print(foundGrandParent)
+         println(foundGrandParent)
       }.join()
 
       println("Shutting down")
