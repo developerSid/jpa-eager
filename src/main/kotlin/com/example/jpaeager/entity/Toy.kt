@@ -2,12 +2,11 @@ package com.example.jpaeager.entity
 
 import java.util.UUID
 import javax.persistence.*
-import javax.persistence.CascadeType.ALL
 import javax.persistence.FetchType.EAGER
 import javax.persistence.GenerationType.IDENTITY
 
 @Entity
-data class GrandParent(
+data class Toy(
 
    @Id
    @GeneratedValue(strategy = IDENTITY)
@@ -18,24 +17,20 @@ data class GrandParent(
    var uuid: String = UUID.randomUUID().toString(),
 
    @Column(nullable = false)
-   var firstName: String? = null,
+   var manufacturer: String? = null,
 
    @Column(nullable = false)
-   var lastName: String? = null,
+   var name: String? = null,
 
    @Column(nullable = false)
-   var age: Int? = null,
+   var condition: String? = null,
 
-   @OneToMany(mappedBy = "grandParent", fetch = EAGER, cascade = [ALL])
-   var parents: Set<Parent> = setOf()
+   @ManyToOne(fetch = EAGER)
+   @JoinColumn(name = "child_id", nullable = false)
+   var child: Child? = null
 ) {
-   constructor(firstName: String, lastName: String, age: Int, parents: Set<Parent>) :
-      this(id = null, firstName = firstName, lastName = lastName, age = age, parents = parents) {
-      this.parents.forEach { it.grandParent = this }
-   }
-
    override fun equals(other: Any?): Boolean {
-      return if (other is GrandParent) {
+      return if (other is Toy) {
          this.uuid == other.uuid
       } else {
          false
@@ -47,6 +42,6 @@ data class GrandParent(
    }
 
    override fun toString(): String {
-      return "GrandParent(id=$id, \nuuid=$uuid, \nfirsName=$firstName, \nlastName=$lastName, \nage=$age, \nparents=${parents.joinToString(", \n")})"
+      return "Toy(id=$id, \nuuid=$uuid, \nmanufacturer=$manufacturer, \nname=$name, \ncondition=$condition)"
    }
 }
