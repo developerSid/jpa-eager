@@ -5,4 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
 
 @Repository
-interface GrandParentRepository: JpaRepository<GrandParent, Long>
+interface GrandParentRepository: JpaRepository<GrandParent, Long> {
+   fun findAllByFirstName(firstName: String): List<GrandParent>
+}

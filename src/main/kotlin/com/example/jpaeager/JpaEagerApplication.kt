@@ -60,9 +60,9 @@ fun main(args: Array<String>) {
       thread {
          println("Loading entire graph")
          val threadGrandParentService = ac.getBean(GrandParentService::class.java)
-         val foundGrandParent = threadGrandParentService.findById(savedGrandParent.id!!)
+         val foundGrandParent = threadGrandParentService.findAllByFirstName(savedGrandParent.firstName!!)
 
-         println(foundGrandParent)
+         foundGrandParent.forEach{println(it)}
       }.join()
 
       println("Shutting down")

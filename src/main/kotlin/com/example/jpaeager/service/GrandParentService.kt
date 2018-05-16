@@ -17,4 +17,7 @@ class GrandParentService(
    fun findById(id: Long): GrandParent? {
       return grandParentRepository.getOne(id)
    }
+
+   fun findAllByFirstName(firstName: String): List<GrandParent> =
+      grandParentRepository.findAllByFirstName(firstName)
 }
