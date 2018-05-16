@@ -42,6 +42,6 @@ data class Car(
    }
 
    override fun toString(): String {
-      return "Toy(id=$id, \nuuid=$uuid, \nmake=$model, \nyear=$year)"
+      return "Toy(id=$id, uuid=$uuid, make=$model, year=$year)"
    }
 }

@@ -47,6 +47,6 @@ data class GrandParent(
    }
 
    override fun toString(): String {
-      return "GrandParent(id=$id, \nuuid=$uuid, \nfirsName=$firstName, \nlastName=$lastName, \nage=$age, \nparents=${parents.joinToString(", \n")})"
+      return "GrandParent(id=$id, uuid=$uuid, firsName=$firstName, lastName=$lastName, age=$age, parents=${parents.joinToString(", ")})"
    }
 }

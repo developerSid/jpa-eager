@@ -51,6 +51,6 @@ data class Child(
    }
 
    override fun toString(): String {
-      return "Child(id=$id, uuid=$uuid, firsName=$firstName, lastName=$lastName, age=$age, \ntoys=${toys.joinToString(", \n")})"
+      return "Child(id=$id, uuid=$uuid, firsName=$firstName, lastName=$lastName, age=$age, toys=${toys.joinToString(", ")})"
    }
 }
